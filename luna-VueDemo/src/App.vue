@@ -1,31 +1,34 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <!--    3. 使用组件标签-->
-    <HelloWorld/>
+  <div>
+    <header class="site-header jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>请发表对Vue的评论</h1>
+        </div>
+      </div>
+    </div>
+    </header>
+    <div class="container">
+      <Add></Add>
+      <List></List>
+    </div>
   </div>
 </template>
 
 <script>
-// 1. 引入组件
-import HelloWorld from './components/HelloWorld'
+import Add from './comporents/Add.vue'
+import List from './comporents/List.vue'
 
 export default {
-  // 2. 映射标签
   name: 'App',
   components: {
-    HelloWorld
+    Add,
+    List
   }
 }
 </script>
 
-<style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+<style scoped>
+
 </style>
