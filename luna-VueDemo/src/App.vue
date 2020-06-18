@@ -1,66 +1,64 @@
 <template>
-  <div>
-    <header class="site-header jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1>请发表对Vue的评论</h1>
-        </div>
-      </div>
-    </div>
-    </header>
-    <div class="container">
-      <Add :addComment="addComment"></Add>
-      <List :comments="comments" :deleteComment="deleteComment"/>
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <TodoHeader :addTodo="addTodo"/>
+      <TodoList :todos="todos" :deleteTodo="deleteTodo"/>
+      <TodoFooter :todos="todos" :deleteCompleteTodos="deleteCompleteTodos" :selectAllTodos="selectAllTodos"/>
     </div>
   </div>
 </template>
 
 <script>
-import Add from './comporents/Add.vue'
-import List from './comporents/List.vue'
-
+import TodoFooter from './components/TodoFooter'
+import TodoHeader from './components/TodoHeader'
+import TodoList from './components/TodoList'
 export default {
-
+  name: 'App',
   data () {
     return {
-      // 数据在那个组件 操作数据的行为就应该定义在那个组件
-      comments: [
-        {
-          name: 'BOB',
-          content: 'Vue 还不错'
-        },
-        {
-          name: 'Cat',
-          content: 'Vue so easy'
-        },
-        {
-          name: 'BZ',
-          content: 'Vue so cool'
-        }
+      todos: [
+        {title: '吃饭', complete: false},
+        {title: '睡觉', complete: true},
+        {title: 'coding', complete: false}
       ]
     }
   },
-
   methods: {
-    // 添加评论
-    addComment (comment) {
-      this.comments.unshift(comment)
+    addTodo (todo) {
+      this.todos.unshift(todo)
     },
-
-    // 删除指定下标评论
-    deleteComment (index) {
-      this.comments.splice(index, 1)
+    deleteTodo (index) {
+      this.todos.splice(index, 1)
+    },
+    deleteCompleteTodos () {
+      // 删除所有选中的todo
+      this.todos = this.todos.filter(todo => !todo.complete)
+    },
+    selectAllTodos (check) {
+      // 全选或者全不选
+      // eslint-disable-next-line no-return-assign
+      this.todos.forEach(todo => todo.complete = check)
     }
   },
-  name: 'App',
   components: {
-    Add,
-    List
+    TodoHeader,
+    TodoList,
+    TodoFooter
   }
 }
 </script>
 
 <style scoped>
+
+  /*app*/
+  .todo-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 
 </style>
