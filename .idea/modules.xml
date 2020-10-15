@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/luna-web.iml" filepath="$PROJECT_DIR$/.idea/luna-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/luna-vue.iml" filepath="$PROJECT_DIR$/.idea/luna-vue.iml" />
     </modules>
   </component>
 </project>
